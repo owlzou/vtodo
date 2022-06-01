@@ -35,7 +35,7 @@ export class TodoTxt {
         let textEnd = i;
 
         // 必须排在前面的内容，i==0
-        if (input[i] == 'x' && isWhiteSpace(input[i + 1])) {
+        if (input[i] === 'x' && isWhiteSpace(input[i + 1])) {
             this.completed = true;
             // this.nodes.push({ type: TodoType.Completed, val: input[i] })
             i = i + 2;
@@ -52,7 +52,7 @@ export class TodoTxt {
         }
 
         // 优先级 Priority，在完成任务时放弃
-        if (!this.completed && input[i] == '(' && isUpperCase(input[i + 1]) && input[i + 2] == ')' && isWhiteSpace(input[i + 3])) {
+        if (!this.completed && input[i] === '(' && isUpperCase(input[i + 1]) && input[i + 2] === ')' && isWhiteSpace(input[i + 3])) {
             this.priority = input.charCodeAt(i + 1) - 'A'.charCodeAt(0) + 1;
             this.nodes.push({ type: TodoType.Priority, val: input[i + 1] });
             i = i + 4;
@@ -71,10 +71,10 @@ export class TodoTxt {
 
         textStart = i;
         while (i < input.length) {
-            if (isWhiteSpace(input[i])) {
-                const j = i + 1;
+            if (isWhiteSpace(input[i]) || i === 0) {
+                const j = i > 0 ? i + 1 : i;
                 // 上下文物品 Context
-                if (input[j] == '@') {
+                if (input[j] === '@') {
                     const end = chompWhile(input, j, (x) => !isWhiteSpace(x));
                     if (end - j > 1) {
                         if (textEnd > textStart) {
@@ -90,7 +90,7 @@ export class TodoTxt {
                     }
                 }
                 // 项目 Project
-                if (input[j] == '+') {
+                if (input[j] === '+') {
                     const end = chompWhile(input, j, (x) => !isWhiteSpace(x));
                     if (end - j > 1) {
                         if (textEnd > textStart) {
@@ -109,7 +109,7 @@ export class TodoTxt {
             textEnd = ++i;
         }
 
-        if (textEnd != textStart) {
+        if (textEnd !== textStart) {
             this.nodes.push({ type: TodoType.Text, val: input.substring(textStart, textEnd).trim() });
         }
     }
@@ -137,7 +137,7 @@ export class TodoTxt {
         if (complete) {
             this.completed = true
             this.completedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate()}`;
-            if (this.nodes[0].type == TodoType.Priority) {
+            if (this.nodes[0].type === TodoType.Priority) {
                 this.nodes.splice(0, 1, { type: TodoType.CompletedDate, val: this.completedDate })
             } else {
                 this.nodes.unshift({ type: TodoType.CompletedDate, val: this.completedDate });
@@ -173,7 +173,7 @@ function isUpperCase(val: string): boolean {
 }
 
 function isWhiteSpace(val: string): boolean {
-    return val == ' '
+    return val === ' '
 }
 
 // 排序

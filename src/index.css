@@ -32,7 +32,7 @@ body * {
   font-family: Pacifico;
 }
 
-/* ------------------------------- TODO中的tag设置 ------------------------------ */
+/* ------------------------------- TODO 中的 tag 设置 ------------------------------ */
 [class^="tag-"] {
   cursor: pointer;
 }
@@ -48,17 +48,24 @@ body * {
   color: var(--color-pink-6);
 }
 
+.tag-date {
+  color: var(--color-green-6);
+}
+
 /* ---------------------------------- 自定义字体 --------------------------------- */
 /* latin */
 @font-face {
-  font-family: 'Pacifico';
+  font-family: "Pacifico";
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/pacifico/v22/FwZY7-Qmy14u9lezJ-6H6Mk.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url(https://fonts.gstatic.com/s/pacifico/v22/FwZY7-Qmy14u9lezJ-6H6Mk.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 
-/* ----------------------------- 一定情况下，Modal框全屏 ----------------------------- */
+/* ----------------------------- 一定情况下，Modal 框全屏 ----------------------------- */
 @media screen and (max-width: 600px), screen and (max-height: 600px) {
   .r-modal {
     width: 100vw !important;

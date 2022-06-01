@@ -1,53 +1,52 @@
-import { defineComponent, PropType } from "vue";
+import { SetupContext } from "vue";
 import { TodoType, TodoNode } from "../todotxt";
 import { RBadge, IColor } from "rect-ui";
 
 const colorList: IColor[] = ["violet", "red", "pink", "orange", "yellow"];
 
-export default defineComponent({
-  props: {
-    node: { type: Object as PropType<TodoNode>, required: true },
-  },
-  components: { RBadge },
-  emits: ["clickTag"],
-  setup(props, { emit }) {
-    switch (props.node!.type) {
+interface IProps {
+  nodes: TodoNode[];
+}
+
+const LineItem = (props: IProps, ctx: SetupContext) => {
+  const elements = props.nodes.map((node) => {
+    switch (node!.type) {
       case TodoType.Priority:
         const index = Math.min(
-          props.node.val.charCodeAt(0) - "A".charCodeAt(0),
+          node.val.charCodeAt(0) - "A".charCodeAt(0),
           colorList.length - 1
         );
-        return () => (
-          <RBadge
-            {...{ text: props.node.val, color: colorList[index] }}
-          ></RBadge>
+        return (
+          <RBadge {...{ text: node.val, color: colorList[index] }}></RBadge>
         );
+
       case TodoType.Project:
-        return () => (
-          <span
-            class="tag-project"
-            onClick={() => emit(`clickTag`, props.node)}
-          >
-            +{props.node.val}&nbsp;
+        return (
+          <span class="tag-project" onClick={() => ctx.emit(`clickTag`, node)}>
+            +{node.val}
           </span>
         );
+
       case TodoType.Context:
-        return () => (
-          <span
-            class="tag-context"
-            onClick={() => emit(`clickTag`, props.node)}
-          >
-            @{props.node.val}&nbsp;
+        return (
+          <span class="tag-context" onClick={() => ctx.emit(`clickTag`, node)}>
+            @{node.val}
           </span>
         );
+
       case TodoType.Date:
-        return () => <span class="r-text-green">{props.node.val}&nbsp;</span>;
+        return <span class="tag-date">{node.val}</span>;
       case TodoType.CompletedDate:
-        return () => <span>{props.node.val}&nbsp;</span>;
+        return <span>{node.val}</span>;
       case TodoType.Text:
-        return () => <span>{props.node.val}&nbsp;</span>;
+        return <span>{node.val}</span>;
       default:
-        return () => <></>;
+        return <></>;
     }
-  },
-});
+  });
+  return (<>{elements.reduce((pre,cur)=><>{pre}&nbsp;{cur}</>)}</>)
+};
+
+LineItem.emits = ["clickTag"];
+
+export default LineItem;

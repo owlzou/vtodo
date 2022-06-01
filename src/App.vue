@@ -20,7 +20,15 @@
           color="pink"
         >
           <template #icon><Download /></template>
-        </r-button> </r-row
+        </r-button>
+        <r-button
+          title="帮助"
+          @click="helpModalVisible = true"
+          type="text"
+          color="green"
+          style="justify-self: end"
+          ><template #icon><HelpCircle /></template
+        ></r-button> </r-row
     ></r-row>
 
     <TodoInput :onsubmit="onsubmit" />
@@ -64,14 +72,6 @@
             type="text"
             color="red"
             ><template #icon><Eraser /></template
-          ></r-button>
-          <r-button
-            title="帮助"
-            @click="helpModalVisible = true"
-            type="text"
-            color="green"
-            style="justify-self: end"
-            ><template #icon><HelpCircle /></template
           ></r-button>
         </r-row>
       </template>
@@ -161,7 +161,6 @@ interface Data {
 
 const todoData: Ref<Data[]> = ref([]);
 const keyword: Ref<string> = ref("");
-const currEditID: Ref<string | null> = ref(null);
 
 const currentSortBy = ref(TodoType.Priority);
 
@@ -230,7 +229,7 @@ const removeAllCompleted = () => {
   save(outputText.value);
 };
 
-// 点击Tag设置新的筛选内容
+// 点击 Tag 设置新的筛选内容
 const onClickTag = (val: TodoNode) => {
   switch (val.type) {
     case TodoType.Context: {

@@ -4,15 +4,18 @@
       <r-checkbox v-model="value.completed" @change="onCompletedChange" />
     </r-col>
     <r-col v-if="editing" class="todo-content">
-      <r-input v-model="text" flat />
+      <r-input
+        v-model="text"
+        flat
+        style="width: calc(100% - 16px)"
+        @keyup.enter.native="onSubmit"
+        ref="inputRef"
+      />
     </r-col>
     <r-col :class="lineClass" v-else>
-      <!-- 选择合适的 key，类型再不行只能选择特殊key了 -->
       <LineItem
-        v-for="i in value.nodes"
-        :node="i"
-        :key="i.type"
-        @click-tag="(val) => $emit(`clickTag`, val)"
+        :nodes="value.nodes"
+        @click-tag="(val:string) => $emit(`clickTag`, val)"
       />
     </r-col>
     <r-col class="todo-editbar">
@@ -24,7 +27,7 @@
         </r-button>
         <r-button type="text" color="gray" title="编辑" v-else>
           <template #icon>
-            <Edit @click="editing = true" />
+            <Edit @click="onEdit" />
           </template>
         </r-button>
         <r-button type="text" color="red" @click="$emit(`remove`)" title="删除"
@@ -37,7 +40,7 @@
 <script setup lang="ts">
 import { RCheckbox, RRow, RButton, RCol, RInput } from "rect-ui";
 import { Edit, Trash2, Save } from "lucide-vue-next";
-import { PropType, computed, ref } from "vue";
+import { PropType, computed, ref, Ref } from "vue";
 import { TodoTxt } from "../todotxt";
 import LineItem from "./LineItem";
 
@@ -49,6 +52,7 @@ const emits = defineEmits(["completed", "remove", "clickTag", "submit"]);
 
 const editing = ref(false);
 const text = ref(props.value.raw);
+const inputRef: Ref<typeof RInput | null> = ref(null);
 
 const lineClass = computed(() => ({
   ["todo-content"]: true,
@@ -62,6 +66,10 @@ function onCompletedChange(completed: Boolean) {
 function onSubmit() {
   emits("submit", text.value);
   editing.value = false;
+}
+
+async function onEdit() {
+  editing.value = true;
 }
 </script>
 <style>

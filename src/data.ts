@@ -1,7 +1,7 @@
 import * as localForage from "localforage";
 
 export async function save(data: string[]): Promise<void> {
-    localForage.setItem('data', data).then(function (value) {
+    localForage.setItem('data', data).then((_value) => {
         return Promise.resolve();
     }).catch(function (err) {
         console.log(err);
