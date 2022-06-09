@@ -190,7 +190,7 @@ const onsubmit = (text: string) => {
   if (text.trim().length > 0) {
     todoData.value.push({ id: nanoid(), val: new TodoTxt(text) });
   }
-  todoData.value.sort((a, b) => sortTodoBy(currentSortBy.value, a.val, b.val));
+  sort(currentSortBy.value);
   save(outputText.value);
 };
 
@@ -206,7 +206,7 @@ const onInputSubmit = (text: string) => {
 // 点击完成一个待办时
 const onCompleted = (completed: Boolean, todo: Data) => {
   todo.val.setComplete(completed);
-  todoData.value.sort((a, b) => sortTodoBy(currentSortBy.value, a.val, b.val));
+  sort(currentSortBy.value);
   save(outputText.value);
 };
 
@@ -250,13 +250,18 @@ const onClickTag = (val: TodoNode) => {
 const onEditSubmit = (id: string, text: string) => {
   const index = todoData.value.findIndex((i) => i.id == id);
   todoData.value[index].val = new TodoTxt(text);
+  sort(currentSortBy.value);
   save(outputText.value);
+};
+
+const sort = (by: TodoType) => {
+  todoData.value.sort((a, b) => sortTodoBy(by, a.val, b.val));
 };
 
 /* ---------------------------------- WATCH --------------------------------- */
 
 watch(currentSortBy, (val, _oldval) => {
-  todoData.value.sort((a, b) => sortTodoBy(val, a.val, b.val));
+  sort(val);
 });
 
 onMounted(() => {

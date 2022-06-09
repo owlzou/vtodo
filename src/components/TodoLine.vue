@@ -40,7 +40,7 @@
 <script setup lang="ts">
 import { RCheckbox, RRow, RButton, RCol, RInput } from "rect-ui";
 import { Edit, Trash2, Save } from "lucide-vue-next";
-import { PropType, computed, ref, Ref } from "vue";
+import { PropType, computed, ref, Ref, nextTick } from "vue";
 import { TodoTxt } from "../todotxt";
 import LineItem from "./LineItem";
 
@@ -70,6 +70,8 @@ function onSubmit() {
 
 async function onEdit() {
   editing.value = true;
+  await nextTick();
+  inputRef.value?.focus();
 }
 </script>
 <style>

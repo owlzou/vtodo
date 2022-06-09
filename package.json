@@ -5,13 +5,13 @@
     "dev": "vite",
     "build": "vuedx-typecheck . && vite build",
     "test": "mocha test/**/*.ts",
-    "deploy": "gh-pages -d dist -r git@github.com:owlzou/vtodo.git"
+    "deploy": "gh-pages -d dist -r git@github.com:owlzou/vtodo.git --no-history"
   },
   "dependencies": {
     "localforage": "^1.10.0",
     "lucide-vue-next": "^0.45.0",
     "nanoid": "^3.3.4",
-    "rect-ui": "https://github.com/owlzou/rect-ui/releases/download/v0.0.1/rect-ui-0.0.1.tgz",
+    "rect-ui": "https://github.com/owlzou/rect-ui/releases/download/v0.0.2/rect-ui-0.0.1.tgz",
     "vue": "^3.2.33"
   },
   "devDependencies": {

@@ -1743,9 +1743,9 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-"rect-ui@https://github.com/owlzou/rect-ui/releases/download/v0.0.1/rect-ui-0.0.1.tgz":
+"rect-ui@https://github.com/owlzou/rect-ui/releases/download/v0.0.2/rect-ui-0.0.1.tgz":
   version "0.0.1"
-  resolved "https://github.com/owlzou/rect-ui/releases/download/v0.0.1/rect-ui-0.0.1.tgz#8a4d9c68e9d0a2b5597911a1b385dbce8590c940"
+  resolved "https://github.com/owlzou/rect-ui/releases/download/v0.0.2/rect-ui-0.0.1.tgz#ad320138fb83d012cc6c1dfddafbcedcf3b3fcf4"
 
 require-directory@^2.1.1:
   version "2.1.1"

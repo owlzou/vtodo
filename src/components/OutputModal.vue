@@ -6,13 +6,13 @@
     closable
     @close="$emit('close')"
   >
-    <template #title><Download/>导出</template>
-    <r-textarea class="output-textarea" :rows="15" readonly v-model="text"/>
+    <template #title><Download />导出</template>
+    <r-textarea class="output-textarea" :rows="15" readonly v-model="text" />
   </r-modal>
 </template>
 <script setup lang="ts">
 import { RModal, RTextarea } from "rect-ui";
-import {Download} from "lucide-vue-next"
+import { Download } from "lucide-vue-next";
 defineProps({
   text: { type: String, default: "" },
   visible: { type: Boolean, default: false },

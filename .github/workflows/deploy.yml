@@ -1,0 +1,24 @@
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Publish
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Build
+        run: |
+          npm install
+          npm run build
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          email: 38106927+owlzou@users.noreply.github.com
+          build_dir: dist
+          branch: gh-pages
