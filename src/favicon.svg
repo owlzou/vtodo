@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="24mm"
+   height="24mm"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="favicon.svg"
+   inkscape:export-filename="assets\favicon.png"
+   inkscape:export-xdpi="270.93332"
+   inkscape:export-ydpi="270.93332"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.9825758"
+     inkscape:cx="-2.8498857"
+     inkscape:cy="89.855218"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="13.411227"
+       y="13.746508"
+       width="65.715011"
+       height="65.04445"
+       id="rect9143" />
+  </defs>
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#666400;stroke-width:2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1;stroke-linejoin:bevel"
+       id="rect61"
+       width="19.857817"
+       height="19.857817"
+       x="2.268672"
+       y="2.1799624"
+       ry="0.23918928" />
+    <path
+       style="fill:none;stroke:#dec031;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-dasharray:none"
+       d="M 4.6129032,11.887096 11.266129,18.008064 21.556451,2.8387096"
+       id="path1653" />
+  </g>
+</svg>

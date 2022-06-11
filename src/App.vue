@@ -275,7 +275,7 @@ onMounted(() => {
 </script>
 <style>
 main {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 .icon-size {
