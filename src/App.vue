@@ -153,6 +153,7 @@ import {
   ConfirmModal,
 } from "./components";
 import { load, save } from "./data";
+
 interface Data {
   id: string;
   val: TodoTxt;
@@ -264,6 +265,8 @@ watch(currentSortBy, (val, _oldval) => {
   sort(val);
 });
 
+/* --------------------------------- MOUNTED -------------------------------- */
+
 onMounted(() => {
   load().then((data) => {
     todoData.value = data.map((i) => ({
@@ -272,6 +275,7 @@ onMounted(() => {
     }));
   });
 });
+
 </script>
 <style>
 main {
